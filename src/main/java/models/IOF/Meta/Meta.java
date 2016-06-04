@@ -1,9 +1,8 @@
-package models.IOF;
+package models.IOF.Meta;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import models.IOF.Meta.Time.Time;
+
+import javax.xml.bind.annotation.*;
 import java.net.URL;
 
 /**
@@ -20,12 +19,12 @@ public class Meta {
     private String shortName;
 
     @XmlElement(name = "showcase_image")
-    private URL showcaseImageUrl;
+    private ShowcaseImage showcaseImageUrl;
 
     @XmlElement
     private String email;
 
-    @XmlElement
+    @XmlElement(name = "address")
     private Address address;
 
     @XmlElement
@@ -36,6 +35,9 @@ public class Meta {
 
     @XmlElement(name = "www")
     private URL homepageAddress;
+
+    @XmlElement(name = "time")
+    private Time time;
 
     public String getLongName() {
         return longName;
@@ -51,14 +53,6 @@ public class Meta {
 
     public void setShortName(String shortName) {
         this.shortName = shortName;
-    }
-
-    public URL getShowcaseImageUrl() {
-        return showcaseImageUrl;
-    }
-
-    public void setShowcaseImageUrl(URL showcaseImageUrl) {
-        this.showcaseImageUrl = showcaseImageUrl;
     }
 
     public String getEmail() {
@@ -99,5 +93,21 @@ public class Meta {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public ShowcaseImage getShowcaseImageUrl() {
+        return showcaseImageUrl;
+    }
+
+    public void setShowcaseImageUrl(ShowcaseImage showcaseImageUrl) {
+        this.showcaseImageUrl = showcaseImageUrl;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
     }
 }

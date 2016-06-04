@@ -1,14 +1,10 @@
 package models;
 
-import models.IOF.Address;
-import models.IOF.Meta;
-import models.IOF.Time;
+import models.IOF.Meta.Meta;
+import models.IOF.Meta.Time.Time;
+import models.IOF.Urls.*;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.net.URL;
+import javax.xml.bind.annotation.*;
 
 /**
  * Created by m.jankus on 2016-05-20.
@@ -19,38 +15,36 @@ public class GatewayInfo {
     @XmlElement
     private Meta meta;
 
-    @XmlElement
-    private Time time;
-
     @XmlElement(name = "full")
-    private URL fullXml;
+    private FullXmlUrl fullXml;
 
     @XmlElement(name = "light")
-    private URL lightXml;
+    private LightXmlUrl lightXml;
 
     @XmlElement(name = "categories")
-    private URL categoriesXml;
+    private CategoriesXmlUrl categoriesXml;
 
     @XmlElement(name = "sizes")
-    private URL sizesXml;
+    private SizesXmlUrl sizesXml;
 
     @XmlElement(name = "producers")
-    private URL producersXml;
+    private ProducersXmlUrl producersXml;
 
     @XmlElement(name = "units")
-    private URL unitsXml;
+    private UnitsXmlUrl unitsXml;
 
+    //@XmlElement(name = "parameters")
     @XmlElement(name = "parameters")
-    private URL parametersXml;
+    private ParametersXmlUrl parametersXml;
 
     @XmlElement(name = "stocks")
-    private URL stocksXml;
+    private StocksXmlUrl stocksXml;
 
     @XmlElement(name = "series")
-    private URL seriesXml;
+    private SeriesXmlUrl seriesXml;
 
     @XmlElement(name = "warranties")
-    private URL warrantiesXml;
+    private WarrantiesXmlUrl warrantiesXml;
 
     public Meta getMeta() {
         return meta;
@@ -60,91 +54,83 @@ public class GatewayInfo {
         this.meta = meta;
     }
 
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
-    }
-
-    public URL getFullXml() {
+    public FullXmlUrl getFullXml() {
         return fullXml;
     }
 
-    public void setFullXml(URL fullXml) {
+    public void setFullXml(FullXmlUrl fullXml) {
         this.fullXml = fullXml;
     }
 
-    public URL getLightXml() {
+    public LightXmlUrl getLightXml() {
         return lightXml;
     }
 
-    public void setLightXml(URL lightXml) {
+    public void setLightXml(LightXmlUrl lightXml) {
         this.lightXml = lightXml;
     }
 
-    public URL getCategoriesXml() {
+    public CategoriesXmlUrl getCategoriesXml() {
         return categoriesXml;
     }
 
-    public void setCategoriesXml(URL categoriesXml) {
+    public void setCategoriesXml(CategoriesXmlUrl categoriesXml) {
         this.categoriesXml = categoriesXml;
     }
 
-    public URL getSizesXml() {
+    public SizesXmlUrl getSizesXml() {
         return sizesXml;
     }
 
-    public void setSizesXml(URL sizesXml) {
+    public void setSizesXml(SizesXmlUrl sizesXml) {
         this.sizesXml = sizesXml;
     }
 
-    public URL getProducersXml() {
+    public ProducersXmlUrl getProducersXml() {
         return producersXml;
     }
 
-    public void setProducersXml(URL producersXml) {
+    public void setProducersXml(ProducersXmlUrl producersXml) {
         this.producersXml = producersXml;
     }
 
-    public URL getUnitsXml() {
+    public UnitsXmlUrl getUnitsXml() {
         return unitsXml;
     }
 
-    public void setUnitsXml(URL unitsXml) {
+    public void setUnitsXml(UnitsXmlUrl unitsXml) {
         this.unitsXml = unitsXml;
     }
 
-    public URL getParametersXml() {
+    public ParametersXmlUrl getParametersXml() {
         return parametersXml;
     }
 
-    public void setParametersXml(URL parametersXml) {
+    public void setParametersXml(ParametersXmlUrl parametersXml) {
         this.parametersXml = parametersXml;
     }
 
-    public URL getStocksXml() {
+    public StocksXmlUrl getStocksXml() {
         return stocksXml;
     }
 
-    public void setStocksXml(URL stocksXml) {
+    public void setStocksXml(StocksXmlUrl stocksXml) {
         this.stocksXml = stocksXml;
     }
 
-    public URL getSeriesXml() {
+    public SeriesXmlUrl getSeriesXml() {
         return seriesXml;
     }
 
-    public void setSeriesXml(URL seriesXml) {
+    public void setSeriesXml(SeriesXmlUrl seriesXml) {
         this.seriesXml = seriesXml;
     }
 
-    public URL getWarrantiesXml() {
+    public WarrantiesXmlUrl getWarrantiesXml() {
         return warrantiesXml;
     }
 
-    public void setWarrantiesXml(URL warrantiesXml) {
+    public void setWarrantiesXml(WarrantiesXmlUrl warrantiesXml) {
         this.warrantiesXml = warrantiesXml;
     }
 }

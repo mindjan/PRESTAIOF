@@ -1,4 +1,4 @@
-package models.IOF;
+package models.IOF.Meta.Time;
 
 import javax.management.Attribute;
 import javax.xml.bind.annotation.*;
@@ -12,25 +12,25 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Time {
 
-    @XmlAttribute(name="date_created")
-    private Date offerDateCreate;
+    @XmlAttribute(name="offer")
+    private DateCreated offerDateCreate;
 
-    @XmlAttribute(name="date_expires")
-    private Date offerDateExpires;
+    @XmlAttribute(name="offer")
+    private DateEexpires offerDateExpires;
 
-    public Date getOfferDateCreate() {
+    public DateCreated getOfferDateCreate() {
         return offerDateCreate;
     }
 
-    public void setOfferDateCreate(Date offerDateCreate) {
+    public void setOfferDateCreate(DateCreated offerDateCreate) {
         this.offerDateCreate = offerDateCreate;
     }
 
-    public Date getOfferDateExpires() {
+    public DateEexpires getOfferDateExpires() {
         return offerDateExpires;
     }
 
-    public void setOfferDateExpires(Date offerDateExpires) {
+    public void setOfferDateExpires(DateEexpires offerDateExpires) {
         this.offerDateExpires = offerDateExpires;
     }
 }
