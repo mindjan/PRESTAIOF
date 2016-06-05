@@ -1,9 +1,8 @@
-package models.IOF.Meta;
+package models.IOF.GatewayInfo.Meta;
 
-import models.IOF.Meta.Time.Time;
+import models.IOF.GatewayInfo.Meta.Time.Time;
 
 import javax.xml.bind.annotation.*;
-import java.net.URL;
 
 /**
  * Created by m.jankus on 2016-05-20.
@@ -34,7 +33,7 @@ public class Meta {
     private String fax;
 
     @XmlElement(name = "www")
-    private URL homepageAddress;
+    private String homepageAddress;
 
     @XmlElement(name = "time")
     private Time time;
@@ -79,14 +78,6 @@ public class Meta {
         this.fax = fax;
     }
 
-    public URL getHomepageAddress() {
-        return homepageAddress;
-    }
-
-    public void setHomepageAddress(URL homepageAddress) {
-        this.homepageAddress = homepageAddress;
-    }
-
     public Address getAddress() {
         return address;
     }
@@ -109,5 +100,13 @@ public class Meta {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public String getHomepageAddress() {
+        return homepageAddress;
+    }
+
+    public void setHomepageAddress(String homepageAddress) {
+        this.homepageAddress = homepageAddress;
     }
 }

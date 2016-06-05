@@ -1,8 +1,7 @@
 package models;
 
-import models.IOF.Meta.Meta;
-import models.IOF.Meta.Time.Time;
-import models.IOF.Urls.*;
+import models.IOF.GatewayInfo.Meta.Meta;
+import models.IOF.GatewayInfo.Urls.*;
 
 import javax.xml.bind.annotation.*;
 
