@@ -1,4 +1,4 @@
-package models.IOF.FullStocks.Sizes;
+package models.IOF.FullStocks.Sizes.Stock;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

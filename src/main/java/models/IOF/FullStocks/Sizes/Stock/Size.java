@@ -1,9 +1,7 @@
-package models.IOF.FullStocks.Sizes;
+package models.IOF.FullStocks.Sizes.Stock;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 /**
  * Created by Mindaugas on 6/5/2016.
@@ -19,6 +17,8 @@ public class Size {
     private String code;
     @XmlAttribute(name = "weight")
     private Integer weight;
+    @XmlElement(name = "stock")
+    private List<Stock> stock;
 
     public String getCodeProducer() {
         return codeProducer;
@@ -50,5 +50,13 @@ public class Size {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<Stock> getStock() {
+        return stock;
+    }
+
+    public void setStock(List<Stock> stock) {
+        this.stock = stock;
     }
 }

@@ -1,4 +1,4 @@
-package models.IOF.FullStocks.Sizes;
+package models.IOF.FullStocks.Sizes.Stock;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,6 +15,7 @@ public class Sizes {
     @XmlElement(name = "size")
     private List<Size> sizes;
 
+
     public List<Size> getSizes() {
         return sizes;
     }
@@ -22,4 +23,5 @@ public class Sizes {
     public void setSizes(List<Size> sizes) {
         this.sizes = sizes;
     }
+
 }

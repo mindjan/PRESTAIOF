@@ -10,7 +10,8 @@ import javax.xml.bind.annotation.*;
 public class LongDescription {
     @XmlAttribute(name = "xml:lang")
     private String language;
-    @XmlElement(name = "long_desc")
+
+    @XmlValue
     private String description;
 
     public String getLanguage() {

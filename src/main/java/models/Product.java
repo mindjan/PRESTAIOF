@@ -5,7 +5,7 @@ import models.IOF.FullStocks.Description.Description;
 import models.IOF.FullStocks.Images.Images;
 import models.IOF.FullStocks.Parameters.Parameters;
 import models.IOF.FullStocks.Price;
-import models.IOF.FullStocks.Sizes.Sizes;
+import models.IOF.FullStocks.Sizes.Stock.Sizes;
 import models.IOF.FullStocks.Unit;
 
 import javax.xml.bind.annotation.*;
