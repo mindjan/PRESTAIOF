@@ -26,4 +26,20 @@ public class Icon {
     public void setUrl(URL url) {
         this.url = url;
     }
+
+    public String getDateChanged() {
+        return dateChanged;
+    }
+
+    public void setDateChanged(String dateChanged) {
+        this.dateChanged = dateChanged;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
 }

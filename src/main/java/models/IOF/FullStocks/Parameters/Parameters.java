@@ -14,4 +14,12 @@ import java.util.List;
 public class Parameters {
     @XmlElement(name = "parameter")
     private List<Parameter> parameters;
+
+    public List<Parameter> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(List<Parameter> parameters) {
+        this.parameters = parameters;
+    }
 }

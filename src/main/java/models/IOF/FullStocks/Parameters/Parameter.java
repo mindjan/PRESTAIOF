@@ -19,4 +19,36 @@ public class Parameter {
 
     @XmlElement(name = "value")
     private ParameterValue value;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public ParameterValue getValue() {
+        return value;
+    }
+
+    public void setValue(ParameterValue value) {
+        this.value = value;
+    }
 }

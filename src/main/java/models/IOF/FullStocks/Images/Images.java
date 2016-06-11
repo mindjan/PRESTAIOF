@@ -16,6 +16,21 @@ public class Images {
     @XmlElement(name = "icons")
     private Icons icons;
 
+    public Large getLarge() {
+        return large;
+    }
+
+    public void setLarge(Large large) {
+        this.large = large;
+    }
+
+    public Icons getIcons() {
+        return icons;
+    }
+
+    public void setIcons(Icons icons) {
+        this.icons = icons;
+    }
 }
 
 
