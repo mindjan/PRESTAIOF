@@ -1,7 +1,7 @@
-package models;
+package models.IOF;
 
-import models.IOF.GatewayInfo.Meta.Meta;
-import models.IOF.GatewayInfo.Urls.*;
+import models.IOF.GatewayInfoModels.Meta.Meta;
+import models.IOF.GatewayInfoModels.Urls.*;
 
 import javax.xml.bind.annotation.*;
 

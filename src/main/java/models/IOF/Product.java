@@ -1,4 +1,4 @@
-package models;
+package models.IOF;
 
 import models.IOF.FullStocks.Category;
 import models.IOF.FullStocks.Description.Description;

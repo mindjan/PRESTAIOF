@@ -1,8 +1,8 @@
 import junit.framework.TestCase;
-import models.GatewayInfo;
-import models.IOF.GatewayInfo.Meta.Meta;
-import models.IOF.GatewayInfo.Meta.Time.OfferDate;
-import models.IOF.GatewayInfo.Meta.Time.Time;
+import models.IOF.GatewayInfo;
+import models.IOF.GatewayInfoModels.Meta.Meta;
+import models.IOF.GatewayInfoModels.Meta.Time.OfferDate;
+import models.IOF.GatewayInfoModels.Meta.Time.Time;
 import org.xml.sax.SAXException;
 import tools.WholesalerGatewayProvider;
 

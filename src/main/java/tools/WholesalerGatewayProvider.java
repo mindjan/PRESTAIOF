@@ -1,6 +1,6 @@
 package tools;
 
-import models.GatewayInfo;
+import models.IOF.GatewayInfo;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 

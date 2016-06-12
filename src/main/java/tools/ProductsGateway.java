@@ -1,7 +1,6 @@
 package tools;
 
-import models.Offer;
-import models.Products;
+import models.IOF.Offer;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 

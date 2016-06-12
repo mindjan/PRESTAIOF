@@ -1,8 +1,6 @@
 package tools;
 
-import models.IOF.FullStocks.Sizes.Combinations.SizesAttributes;
 import models.IOF.FullStocks.Sizes.Combinations.SizesValues;
-import models.Offer;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
