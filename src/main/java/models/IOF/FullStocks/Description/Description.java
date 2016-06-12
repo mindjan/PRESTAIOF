@@ -13,6 +13,9 @@ public class Description {
     @XmlElement(name = "long_desc")
     private List<LongDescription> longDescriptions;
 
+    @XmlElement(name = "name")
+    private DescName name;
+
     public List<LongDescription> getLongDescriptions() {
         return longDescriptions;
     }
@@ -21,44 +24,11 @@ public class Description {
         this.longDescriptions = longDescriptions;
     }
 
-    @XmlRootElement(name = "name")
-    @XmlAccessorType(XmlAccessType.FIELD)
-    public class Name{
-        @XmlElement(name = "name")
-        private String name;
-        @XmlAttribute(name = "xml:lang")
-        private String lang;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getLang() {
-            return lang;
-        }
-
-        public void setLang(String lang) {
-            this.lang = lang;
-        }
+    public DescName getName() {
+        return name;
     }
 
-    @XmlRootElement(name = "version")
-    @XmlAccessorType(XmlAccessType.FIELD)
-    public class Version{
-        @XmlElement(name = "name")
-        private List<Name> name;
-
-        public List<Name> getName() {
-            return name;
-        }
-
-        public void setName(List<Name> name) {
-            this.name = name;
-        }
+    public void setName(DescName name) {
+        this.name = name;
     }
-
 }

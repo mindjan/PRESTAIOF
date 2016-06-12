@@ -1,8 +1,7 @@
 import junit.framework.TestCase;
 import org.xml.sax.SAXException;
-import tools.ProductsGateway;
-import tools.SizesGateway;
-import tools.WholesalerGatewayProvider;
+import tools.IOFGateways.SizesGateway;
+import tools.IOFGateways.WholesalerGatewayProvider;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;

@@ -1,13 +1,12 @@
 import junit.framework.TestCase;
 import org.xml.sax.SAXException;
-import tools.ProductsGateway;
-import tools.WholesalerGatewayProvider;
+import tools.IOFGateways.ProductsGateway;
+import tools.IOFGateways.WholesalerGatewayProvider;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;

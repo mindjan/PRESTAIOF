@@ -1,4 +1,4 @@
-package tools;
+package tools.IOFGateways;
 
 import models.IOF.GatewayInfo;
 import org.w3c.dom.Document;

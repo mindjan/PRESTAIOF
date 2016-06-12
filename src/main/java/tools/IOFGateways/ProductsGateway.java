@@ -1,4 +1,4 @@
-package tools;
+package tools.IOFGateways;
 
 import models.IOF.Offer;
 import org.w3c.dom.Document;
@@ -35,5 +35,13 @@ public class ProductsGateway {
         JAXBContext jaxbContext = JAXBContext.newInstance(Offer.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         offer = (Offer) jaxbUnmarshaller.unmarshal(doc);
+    }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
     }
 }

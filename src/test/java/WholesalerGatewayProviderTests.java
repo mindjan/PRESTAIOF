@@ -4,7 +4,7 @@ import models.IOF.GatewayInfoModels.Meta.Meta;
 import models.IOF.GatewayInfoModels.Meta.Time.OfferDate;
 import models.IOF.GatewayInfoModels.Meta.Time.Time;
 import org.xml.sax.SAXException;
-import tools.WholesalerGatewayProvider;
+import tools.IOFGateways.WholesalerGatewayProvider;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;

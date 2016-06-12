@@ -1,4 +1,4 @@
-package tools;
+package tools.IOFGateways;
 
 import models.IOF.FullStocks.Sizes.Combinations.SizesValues;
 import org.w3c.dom.Document;
