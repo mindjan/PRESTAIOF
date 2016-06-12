@@ -1,4 +1,4 @@
-package models.IOF.GatewayInfo.Urls;
+package models.IOF.GatewayInfoModels.Urls;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -9,9 +9,9 @@ import java.net.URL;
 /**
  * Created by Mindaugas on 6/4/2016.
  */
-@XmlRootElement(name = "series")
+@XmlRootElement(name = "units")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SeriesXmlUrl {
+public class UnitsXmlUrl {
     @XmlAttribute
     private URL url;
 

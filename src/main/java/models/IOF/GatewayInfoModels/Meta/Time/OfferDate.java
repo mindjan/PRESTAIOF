@@ -1,4 +1,4 @@
-package models.IOF.GatewayInfo.Meta.Time;
+package models.IOF.GatewayInfoModels.Meta.Time;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

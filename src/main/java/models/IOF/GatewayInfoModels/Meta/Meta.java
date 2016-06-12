@@ -1,6 +1,6 @@
-package models.IOF.GatewayInfo.Meta;
+package models.IOF.GatewayInfoModels.Meta;
 
-import models.IOF.GatewayInfo.Meta.Time.Time;
+import models.IOF.GatewayInfoModels.Meta.Time.Time;
 
 import javax.xml.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package models.IOF.GatewayInfo.Meta;
+package models.IOF.GatewayInfoModels.Meta;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
