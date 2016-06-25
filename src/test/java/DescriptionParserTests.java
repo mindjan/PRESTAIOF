@@ -1,7 +1,8 @@
 import junit.framework.TestCase;
 import org.xml.sax.SAXException;
-import tools.IOFGateways.SizesGateway;
+import tools.IOFGateways.ProductsGateway;
 import tools.IOFGateways.WholesalerGatewayProvider;
+import tools.Translators.Helpers.DescriptionParser;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -12,16 +13,14 @@ import java.net.URL;
 import java.util.Properties;
 
 /**
- * Created by Mindaugas on 6/11/2016.
+ * Created by root on 16.6.25.
  */
-public class SizesGatewayTests extends TestCase {
-    protected void setUp(){
-
-    }
-
-    public void testProductsGateway() throws SAXException, JAXBException, ParserConfigurationException, XPathExpressionException, IOException {
+public class DescriptionParserTests extends TestCase {
+    public void testDescriptionParser() throws SAXException, JAXBException, ParserConfigurationException, XPathExpressionException, IOException {
+        DescriptionParser descriptionParser = new DescriptionParser();
         WholesalerGatewayProvider wholesalerGatewayProvider = generateGetwayProvider();
-        SizesGateway sizesGateway = new SizesGateway(wholesalerGatewayProvider.getGatewayInfo().getSizesXml().getUrl());
+        ProductsGateway productsGateway = new ProductsGateway(wholesalerGatewayProvider.getGatewayInfo().getFullXml().getUrl());
+        descriptionParser.parseDescriptions(productsGateway.getOffer().getProducts().getProducts().get(0).getDescription());
         int a = 1;
     }
 

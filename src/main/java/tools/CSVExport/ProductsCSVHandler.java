@@ -101,7 +101,7 @@ public class ProductsCSVHandler {
 
     private WholesalerGatewayProvider generateGetwayProvider() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, JAXBException {
         Properties props = new Properties();
-        FileInputStream input = new FileInputStream("src\\main\\resources\\config.properties");
+        FileInputStream input = new FileInputStream("src/main/resources/config.properties");
 
         props.load(input);
         String czasnabutyGatewayUrl = props.getProperty("czasnabutyGatewayUrl");
