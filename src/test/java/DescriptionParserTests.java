@@ -1,8 +1,9 @@
 import junit.framework.TestCase;
+import models.IOF.Product;
 import org.xml.sax.SAXException;
 import tools.IOFGateways.ProductsGateway;
 import tools.IOFGateways.WholesalerGatewayProvider;
-import tools.Translators.Helpers.DescriptionParser;
+import tools.Translators.Helpers.DescriptionSizeTableParser;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,11 +18,16 @@ import java.util.Properties;
  */
 public class DescriptionParserTests extends TestCase {
     public void testDescriptionParser() throws SAXException, JAXBException, ParserConfigurationException, XPathExpressionException, IOException {
-        DescriptionParser descriptionParser = new DescriptionParser();
+        DescriptionSizeTableParser descriptionSizeTableParser = new DescriptionSizeTableParser();
         WholesalerGatewayProvider wholesalerGatewayProvider = generateGetwayProvider();
         ProductsGateway productsGateway = new ProductsGateway(wholesalerGatewayProvider.getGatewayInfo().getFullXml().getUrl());
-        descriptionParser.parseDescriptions(productsGateway.getOffer().getProducts().getProducts().get(0).getDescription());
-        int a = 1;
+
+        for (Product produt : productsGateway.getOffer().getProducts().getProducts()) {
+            descriptionSizeTableParser.parseDescriptions(produt.getDescription());
+        }
+
+       // descriptionSizeTableParser.parseDescriptions(productsGateway.getOffer().getProducts().getProducts().get(0).getDescription());
+       // int a = 1;
     }
 
     private WholesalerGatewayProvider generateGetwayProvider() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, JAXBException {
