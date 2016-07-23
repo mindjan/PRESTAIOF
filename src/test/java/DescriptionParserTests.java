@@ -3,6 +3,7 @@ import models.IOF.Product;
 import org.xml.sax.SAXException;
 import tools.IOFGateways.ProductsGateway;
 import tools.IOFGateways.WholesalerGatewayProvider;
+import tools.Translators.DescriptionTranslator;
 import tools.Translators.Helpers.DescriptionSizeTableParser;
 
 import javax.xml.bind.JAXBException;
@@ -22,12 +23,12 @@ public class DescriptionParserTests extends TestCase {
         WholesalerGatewayProvider wholesalerGatewayProvider = generateGetwayProvider();
         ProductsGateway productsGateway = new ProductsGateway(wholesalerGatewayProvider.getGatewayInfo().getFullXml().getUrl());
 
+        DescriptionTranslator dt = new DescriptionTranslator();
+
         for (Product produt : productsGateway.getOffer().getProducts().getProducts()) {
             descriptionSizeTableParser.parseDescriptions(produt.getDescription());
         }
 
-       // descriptionSizeTableParser.parseDescriptions(productsGateway.getOffer().getProducts().getProducts().get(0).getDescription());
-       // int a = 1;
     }
 
     private WholesalerGatewayProvider generateGetwayProvider() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, JAXBException {

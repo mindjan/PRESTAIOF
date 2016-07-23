@@ -22,7 +22,7 @@ public class SizesGateway {
         Persist(productsXmlURL);
     }
 
-    private SizesValues sizes = new SizesValues();
+    public SizesValues sizes = new SizesValues();
 
     private void Persist(URL sizesXmlURL) throws ParserConfigurationException, IOException, JAXBException, SAXException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

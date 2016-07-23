@@ -1,6 +1,5 @@
 package tools.Translators.Helpers;
 
-import models.IOF.FullStocks.Description.Description;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Attributes;
@@ -18,7 +17,7 @@ import java.util.Set;
  */
 public class HtmlDescritionParser {
 
-    Set<String> Description = new HashSet<String>();
+    private Set<String> Description = new HashSet<String>();
 
     public void parseHtmlDescription(String description) throws IOException {
         Document doc = Jsoup.parse(description);
@@ -31,7 +30,7 @@ public class HtmlDescritionParser {
         processDescriptions(paragraphs);
         processTables(tableElements);
 
-        print(Description);
+        appendToDTranslationsCsv(Description);
     }
 
     private void processTables(Elements tables){
@@ -69,7 +68,7 @@ public class HtmlDescritionParser {
         }
     }
 
-    private void print(Set<String> Description) throws IOException {
+    private void appendToDTranslationsCsv(Set<String> Description) throws IOException {
         FileWriter fw = new FileWriter("translations.csv");
 
         for (String description : Description) {

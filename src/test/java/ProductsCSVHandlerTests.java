@@ -1,5 +1,6 @@
 import junit.framework.TestCase;
 import org.xml.sax.SAXException;
+import tools.CSVExport.CombinationsCSVHandler;
 import tools.CSVExport.ProductsCSVHandler;
 import tools.IOFGateways.ProductsGateway;
 import tools.IOFGateways.WholesalerGatewayProvider;
@@ -19,6 +20,8 @@ public class ProductsCSVHandlerTests extends TestCase {
 
     public void testProductsCSV() throws SAXException, JAXBException, ParserConfigurationException, XPathExpressionException, IOException {
         ProductsCSVHandler productsCSV = new ProductsCSVHandler();
+        CombinationsCSVHandler combinationsCSVHandler = new CombinationsCSVHandler();
         productsCSV.GenerateProductsCsv(1001);
+        combinationsCSVHandler.generateCombinationsCsv();
     }
 }
