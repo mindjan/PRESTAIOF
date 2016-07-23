@@ -4,9 +4,12 @@ import models.CSVExport.ProductsCSV;
 import models.IOF.FullStocks.Description.LongDescription;
 import models.IOF.FullStocks.Images.Image;
 import models.IOF.Product;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.xml.sax.SAXException;
 import tools.IOFGateways.ProductsGateway;
 import tools.IOFGateways.WholesalerGatewayProvider;
+import tools.Translators.Helpers.HtmlDescritionParser;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,6 +26,7 @@ import java.util.Properties;
  * Created by Mindaugas on 6/11/2016.
  */
 public class ProductsCSVHandler {
+    HtmlDescritionParser htmlDescritionParser = new HtmlDescritionParser();
     public void GenerateProductsCsv(Integer wholesalerCode) throws ParserConfigurationException, IOException, SAXException, JAXBException, XPathExpressionException {
         WholesalerGatewayProvider wholesalerGatewayProvider = generateGetwayProvider();
         ProductsGateway productsGateway = new ProductsGateway(wholesalerGatewayProvider.getGatewayInfo().getFullXml().getUrl());
@@ -37,7 +41,7 @@ public class ProductsCSVHandler {
 
         for (ProductsCSV product : products) {
             fw.write(product.getID()+";0;+"+product.getName()+"+;"+product.getCategories()+";"+product.getPrice()+";;"+product.getWholesalePrice()+";0;;" +
-                    ";;;;;;;;;;;;;;;1;"+product.getVisability()+";;;"+product.getPrice()+";;DESCRIPTION;;;;;;;;1;;;1;"+product.getImageUrls()+";" +
+                    ";;;;;;;;;;;;;;;1;"+product.getVisability()+";;;"+product.getPrice()+";;"+htmlDescritionParser.processDescription(product.getDescription())+";;;;;;;;1;;;1;"+product.getImageUrls()+";" +
                     ";;;;;;;;;;;"+"\n");
         }
 
@@ -66,6 +70,7 @@ public class ProductsCSVHandler {
             line.setDescription(generateDescription(product.getDescription().getLongDescriptions()));
             line.setVisability("both");
             line.setCondition("new");
+            line.setCategories("shoes");
             line.setCategories("shoes");
 
             lines.add(line);

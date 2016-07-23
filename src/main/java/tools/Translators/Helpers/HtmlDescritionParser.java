@@ -58,16 +58,6 @@ public class HtmlDescritionParser {
         }
     }
 
-    private void removeHtmlAttributes(Document doc){
-        Elements el = doc.getAllElements();
-        for (Element e : el) {
-            Attributes at = e.attributes();
-            for (Attribute a : at) {
-                e.removeAttr(a.getKey());
-            }
-        }
-    }
-
     private void appendToDTranslationsCsv(Set<String> Description) throws IOException {
         FileWriter fw = new FileWriter("translations.csv");
 
@@ -76,5 +66,23 @@ public class HtmlDescritionParser {
         }
 
         fw.close();
+    }
+
+    public String processDescription(String description){
+        Document doc = Jsoup.parse(description);
+
+        removeHtmlAttributes(doc);
+
+        return doc.outerHtml().replaceAll("\\n", "").replaceAll(";", "").replaceAll("&nbsp", "");
+    }
+
+    private void removeHtmlAttributes(Document doc){
+        Elements el = doc.getAllElements();
+        for (Element e : el) {
+            Attributes at = e.attributes();
+            for (Attribute a : at) {
+                e.removeAttr(a.getKey());
+            }
+        }
     }
 }
