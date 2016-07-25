@@ -53,7 +53,7 @@ public class HtmlDescritionParser {
                 Description.add(spited[1]);
             }
             else{
-                Description.add(element.text());
+               // Description.add(element.text());
             }
         }
     }
