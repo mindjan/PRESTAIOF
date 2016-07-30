@@ -14,6 +14,9 @@ import java.util.List;
 public class DescriptionSizeTableParser {
     HtmlDescritionParser dstp = new HtmlDescritionParser();
 
+    public DescriptionSizeTableParser() throws IOException {
+    }
+
     public void parseDescriptions(Description description) throws IOException {
         String parsedWords = "";
 

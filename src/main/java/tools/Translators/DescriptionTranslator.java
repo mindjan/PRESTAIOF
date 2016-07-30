@@ -24,13 +24,14 @@ public class DescriptionTranslator {
     public String translateDescription(String description){
         Document doc = Jsoup.parse(description);
         removeHtmlAttributes(doc);
+        removeUnnededDescription(doc);
         String translated = trancslateEverything(doc.outerHtml());
         return translated;
     }
 
     private String trancslateEverything(String description){
         for (String key:translations.keySet()) {
-            description.replaceAll(key, translations.get(key));
+            description = description.replace(key, translations.get(key));
         }
         return description;
     }
@@ -50,6 +51,15 @@ public class DescriptionTranslator {
         }
 
         br.close();
+    }
+
+    private void removeUnnededDescription(Document doc) {
+        Elements el = doc.getAllElements();
+        for (Element e : el) {
+            if (e.tag().getName().equalsIgnoreCase("p") && e.children().size() == 0) {
+                e.remove();
+            }
+        }
     }
 
     private void removeHtmlAttributes(Document doc){

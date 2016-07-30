@@ -6,6 +6,7 @@ import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import tools.Translators.DescriptionTranslator;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +19,10 @@ import java.util.Set;
 public class HtmlDescritionParser {
 
     private Set<String> Description = new HashSet<String>();
+    private DescriptionTranslator translator = new DescriptionTranslator();
+
+    public HtmlDescritionParser() throws IOException {
+    }
 
     public void parseHtmlDescription(String description) throws IOException {
         Document doc = Jsoup.parse(description);
@@ -73,7 +78,11 @@ public class HtmlDescritionParser {
 
         removeHtmlAttributes(doc);
 
-        return doc.outerHtml().replaceAll("\\n", "").replaceAll(";", "").replaceAll("&nbsp", "");
+        String descriptionProcessed = doc.outerHtml().replaceAll("\\n", "").replaceAll(";", "").replaceAll("&nbsp", "");
+
+        descriptionProcessed = translator.translateDescription(descriptionProcessed);
+
+        return descriptionProcessed;
     }
 
     private void removeHtmlAttributes(Document doc){

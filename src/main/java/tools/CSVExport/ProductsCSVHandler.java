@@ -27,6 +27,10 @@ import java.util.Properties;
  */
 public class ProductsCSVHandler {
     HtmlDescritionParser htmlDescritionParser = new HtmlDescritionParser();
+
+    public ProductsCSVHandler() throws IOException {
+    }
+
     public void GenerateProductsCsv(Integer wholesalerCode) throws ParserConfigurationException, IOException, SAXException, JAXBException, XPathExpressionException {
         WholesalerGatewayProvider wholesalerGatewayProvider = generateGetwayProvider();
         ProductsGateway productsGateway = new ProductsGateway(wholesalerGatewayProvider.getGatewayInfo().getFullXml().getUrl());
