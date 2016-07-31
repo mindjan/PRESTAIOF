@@ -37,7 +37,7 @@ public class DescriptionTranslator {
     }
 
     private void loadTranslations() throws IOException {
-        FileInputStream fis = new FileInputStream("/home/mindaugas/Projects/PRESTAIOF/src/main/resources/translations.csv");
+        FileInputStream fis = new FileInputStream("C:\\Users\\Mindaugas\\Projects\\PRESTAIOF\\src\\main\\resources\\translations.csv");
 
         //Construct BufferedReader from InputStreamReader
         BufferedReader br = new BufferedReader(new InputStreamReader(fis));

@@ -64,10 +64,12 @@ public class CombinationsCSVHandler {
         for (Product product:products) {
             for(Size size:product.getSizes().getSizes()){
                 if(size.getStock() != null){
-                    lines.add(""+wholesalerCode.toString()+product.getId().toString()+";Dydis:select:0;"+sizes.get(size.getId())+":0;;" +
-                            ";;;"+product.getPrice().getGross()+";0;;"+size.getStock().get(0).getQuantity()+";1;" +
-                            "0;1;;;;" +
-                            ";;;;");
+                    if(size.getStock().get(0).getQuantity() > 3) {
+                        lines.add("" + wholesalerCode.toString() + product.getId().toString() + ";;Dydis:select:0;" + sizes.get(size.getId()) + ":0;;;" +
+                                ";;" + product.getPrice().getGross() + ";0;;" + size.getStock().get(0).getQuantity() + ";1;" +
+                                "0;1;;;;" +
+                                ";;;;");
+                    }
                 }
             }
         }

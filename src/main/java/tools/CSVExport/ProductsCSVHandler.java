@@ -41,11 +41,11 @@ public class ProductsCSVHandler {
     private void print(List<ProductsCSV> products) throws IOException {
         FileWriter fw = new FileWriter("products.csv");
 
-        fw.write(products.get(1).getCSVFormat());
+        fw.write(products.get(1).getCSVFormat()+"\n");
 
         for (ProductsCSV product : products) {
             fw.write(product.getID()+";0;+"+product.getName()+"+;"+product.getCategories()+";"+product.getPrice()+";;"+product.getWholesalePrice()+";0;;" +
-                    ";;;;;;;;;;;;;;;1;"+product.getVisability()+";;;"+product.getPrice()+";;"+htmlDescritionParser.processDescription(product.getDescription())+";;;;;;;;1;;;1;"+product.getImageUrls()+";" +
+                    ";;;;;;;;;;;;;;;1;"+product.getVisability()+";;;"+product.getPrice()+";;"+htmlDescritionParser.processDescription(product.getDescription()).replace(";","").replace("\n", "")+";;;;;;;;1;;;1;"+product.getImageUrls()+";" +
                     ";;;;;;;;;;;"+"\n");
         }
 
@@ -63,12 +63,12 @@ public class ProductsCSVHandler {
             ProductsCSV line = new ProductsCSV();
             line.setID(wholesalerCodePref+product.getId().toString());
             line.setActive("0");
-            Double price = product.getPrice().getGross()*1.23*1.5;
+            Double price = product.getPrice().getGross()/4.36*2;
             line.setPrice(price.toString());
             line.setImageUrls(generateImages(product.getImages().getLarge().getImages()));
             line.setName(product.getDescription().getName().getName());
             line.setMinimalQuantity("1");
-            Double priceWholesale = product.getPrice().getGross()*1.23;
+            Double priceWholesale = product.getPrice().getNet()/4.36;
             line.setWholesalePrice(priceWholesale.toString());
             line.setAvailableForOrder("1");
             line.setDescription(generateDescription(product.getDescription().getLongDescriptions()));
