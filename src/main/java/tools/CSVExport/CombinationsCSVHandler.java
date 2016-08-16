@@ -23,6 +23,7 @@ import java.util.*;
  * Created by mindaugas on 16.7.23.
  */
 public class CombinationsCSVHandler {
+    private static List<String> sizesAll = new ArrayList<String>();
     private static String pattern = "Product ID*;Attribute (Name:Type:Position)*;Value (Value:Position)*;Supplier reference;" +
             "Reference;EAN13;UPC;Wholesale price;Impact on price;Ecotax;Quantity;Minimal quantity;" +
             "Impact on weight;Default (0 = No, 1 = Yes);Combination available date;Image position;Image URL;" +
@@ -40,10 +41,14 @@ public class CombinationsCSVHandler {
         printCsv(generateCombinations);
     }
 
+    private void appenSizes(String size){
+        sizesAll.add(size);
+    }
+
     private void printCsv(List<String> lines) throws IOException {
         FileWriter fw = new FileWriter("combinations.csv");
 
-        fw.write(pattern);
+        fw.write(pattern+"\n");
         for (String line : lines) {
             fw.write(line + "\n");
         }
@@ -59,21 +64,33 @@ public class CombinationsCSVHandler {
         }
     }
 
-    private List<String> createCombinatiosCsv(List<Product> products){
+    private List<String> createCombinatiosCsv(List<Product> products) throws IOException {
         List<String> lines = new ArrayList<String>();
         for (Product product:products) {
             for(Size size:product.getSizes().getSizes()){
                 if(size.getStock() != null){
                     if(size.getStock().get(0).getQuantity() > 3) {
-                        lines.add("" + wholesalerCode.toString() + product.getId().toString() + ";;Dydis:select:0;" + sizes.get(size.getId()) + ":0;;;" +
-                                ";;" + product.getPrice().getGross() + ";0;;" + size.getStock().get(0).getQuantity() + ";1;" +
+                        lines.add("" + wholesalerCode.toString() + product.getId().toString() + ";;Dydis:select:0;" + sizes.get(size.getId()) + ":0;;;;" +
+                                ";" + product.getPrice().getGross() + ";0;;" + size.getStock().get(0).getQuantity() + ";1;" +
                                 "0;1;;;;" +
                                 ";;;;");
+                        sizesAll.add(sizes.get(size.getId()));
                     }
                 }
             }
         }
+        printSizes();
         return lines;
+    }
+
+    private void printSizes() throws IOException {
+        List<String> list =  new ArrayList(new HashSet(sizesAll));
+        FileWriter fw = new FileWriter("C:\\Users\\Mindaugas\\Projects\\PRESTAIOF\\src\\main\\resources\\sizes.csv");
+
+        for (String a:list) {
+            fw.write(a+"\n");
+        }
+        fw.close();
     }
 
     private WholesalerGatewayProvider generateGetwayProvider() throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, JAXBException {

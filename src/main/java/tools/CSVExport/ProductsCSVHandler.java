@@ -14,10 +14,9 @@ import tools.Translators.Helpers.HtmlDescritionParser;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -35,7 +34,37 @@ public class ProductsCSVHandler {
         WholesalerGatewayProvider wholesalerGatewayProvider = generateGetwayProvider();
         ProductsGateway productsGateway = new ProductsGateway(wholesalerGatewayProvider.getGatewayInfo().getFullXml().getUrl());
         List<ProductsCSV> products = GenerateLines(productsGateway, wholesalerCode);
-        print(products);
+        List<ProductsCSV> filteredProducts = filterImportedProducts(products);
+        print(filteredProducts);
+    }
+
+    private  List<ProductsCSV> filterImportedProducts(List<ProductsCSV> products) throws IOException {
+        List<ProductsCSV> filteredProducts = new ArrayList<ProductsCSV>();
+        List<String> importedProducts = readImportedProducts();
+        for(ProductsCSV product: products){
+            if(!importedProducts.contains(product.getID())){
+                filteredProducts.add(product);
+            }
+        }
+
+        return filteredProducts;
+    }
+
+    private List<String> readImportedProducts() throws IOException {
+        List<String> importedProductsIds = new ArrayList<String>();
+
+        FileInputStream fis = new FileInputStream("C:\\Users\\Mindaugas\\Projects\\PRESTAIOF\\src\\main\\resources\\importedProducts.csv");
+
+        //Construct BufferedReader from InputStreamReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            importedProductsIds.add(line);
+        }
+        br.close();
+
+        return importedProductsIds;
     }
 
     private void print(List<ProductsCSV> products) throws IOException {
@@ -45,7 +74,7 @@ public class ProductsCSVHandler {
 
         for (ProductsCSV product : products) {
             fw.write(product.getID()+";0;+"+product.getName()+"+;"+product.getCategories()+";"+product.getPrice()+";;"+product.getWholesalePrice()+";0;;" +
-                    ";;;;;;;;;;;;;;;1;"+product.getVisability()+";;;"+product.getPrice()+";;"+htmlDescritionParser.processDescription(product.getDescription()).replace(";","").replace("\n", "")+";;;;;;;;1;;;1;"+product.getImageUrls()+";" +
+                    ";;;;;;;;;;;;;;;1;"+product.getVisability()+";;;"+product.getPrice()+1+";;"+htmlDescritionParser.processDescription(product.getDescription()).replace(";","").replace("\n", "")+";;;;;;;;1;;;1;"+product.getImageUrls()+";" +
                     ";;;;;;;;;;;"+"\n");
         }
 
@@ -57,6 +86,7 @@ public class ProductsCSVHandler {
 
         String wholesalerCodePref = wholesalerCode.toString();
 
+
         for (Product product : productsGateway.getOffer().getProducts().getProducts()){
 
 
@@ -64,12 +94,12 @@ public class ProductsCSVHandler {
             line.setID(wholesalerCodePref+product.getId().toString());
             line.setActive("0");
             Double price = product.getPrice().getGross()/4.36*2;
-            line.setPrice(price.toString());
+            line.setPrice(String.format("%.2f", price));
             line.setImageUrls(generateImages(product.getImages().getLarge().getImages()));
             line.setName(product.getDescription().getName().getName());
             line.setMinimalQuantity("1");
-            Double priceWholesale = product.getPrice().getNet()/4.36;
-            line.setWholesalePrice(priceWholesale.toString());
+            Double priceWholesale = product.getPrice().getGross()/4.36;
+            line.setWholesalePrice(String.format("%.2f", priceWholesale));
             line.setAvailableForOrder("1");
             line.setDescription(generateDescription(product.getDescription().getLongDescriptions()));
             line.setVisability("both");
